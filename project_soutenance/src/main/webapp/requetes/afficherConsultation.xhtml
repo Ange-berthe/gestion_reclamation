@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+      
+      
+      <!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+	<ui:composition template="/templates/templateAdmin.xhtml">
+			
+			<ui:define name="body">
+			
+			<h:form id="form">
+			
+			<p:dataTable var="variable" value="#{listConsultationControllers.listeConsultation}">
+			<f:facet name="header">Liste Des Consultations</f:facet>
+			<p:ajax event="rowSelect"  listener="#{listConsultationControllers.chargerListConsultation}" update="form"></p:ajax>
+			
+			   <p:column headerText="N°_consultation">
+			    <h:outputText value="#{variable.idConsultation}" />
+			    </p:column>
+			    
+			    <p:column headerText="id_Medecin">
+			    <h:outputText value="#{variable.medecin.idMed}" />
+			    </p:column>
+			    
+			    <p:column headerText="id_Patient">
+			    <h:outputText value="#{variable.patient.idPat} " />
+			    </p:column>
+			    
+			    <p:column headerText="Date_HeureConsultation">
+			    <h:outputText value="#{variable.dateConsultation}" />
+			    </p:column>
+			</p:dataTable>
+			<br />
+			<br/>
+			
+			<p:dataTable var="var" value="#{controllersConsultation.lisConsultations}">
+			<f:facet name="header">Liste de toutes les consultations</f:facet>
+			
+			 <p:column headerText="Id°_consultation">
+			    <h:outputText value="#{var.idConsultation}" />
+			    </p:column>
+			    
+			    <p:column headerText="id_Patient">
+			    <h:outputText value="#{var.patient.idPat} " />
+			    </p:column>
+			    
+			    <p:column headerText="id_Medecin">
+			    <h:outputText value="#{var.medecin.idMed}" />
+			    </p:column>
+			    
+			    <p:column headerText="Date_HeureConsultation">
+			    <h:outputText value="#{var.dateConsultation}" />
+			    </p:column>
+			</p:dataTable>
+			
+			<br/>
+			<br/>
+			
+			
+			
+			</h:form>
+			
+			   
+	       </ui:define>	
+	
+	</ui:composition>
+			
+
+</html>
