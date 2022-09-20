@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+
+   <!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+	<ui:composition template="/templates/templateAdmin.xhtml">
+			
+			<ui:define name="body">
+			
+			<h:form id="form">
+			
+			<p:dataTable var="var" value="#{listMedecinControllers.listeMedecin}">
+			<f:facet name="header">Listes de tous les medecins</f:facet>
+	      <!--  <p:ajax event="rowSelect"  listener="#{listMedecinControllers.afficherListMedecin}" update="form"></p:ajax>  
+		     -->
+		    <p:column headerText="Id_Medecin">
+		    <h:outputText value="#{var.idMed}" />
+		    </p:column>
+		    
+		    <p:column headerText="Noms_Medecin">
+			<h:outputText value="#{var.nom}" />
+			</p:column>
+			
+			<p:column headerText="Prenoms_medecin">
+			<h:outputText value="#{var.prenom}" />
+			</p:column>
+			
+			</p:dataTable>
+			
+			</h:form>
+			
+			
+			 </ui:define>	
+	
+	</ui:composition>
+			
+</html>
